@@ -1,0 +1,168 @@
+@import 'normalize.scss'
+@import 'reset.scss'
+
+// Шрифты
+
+@font-face
+  font-family: Roboto
+  font-weight: 900
+  src: local("Roboto-Black"), url('../fonts/Roboto-Black.ttf')
+
+@font-face
+  font-family: Roboto
+  font-weight: 800
+  src: local("Roboto-Bold"), url('../fonts/Roboto-Bold.ttf')
+
+@font-face
+  font-family: Roboto
+  font-weight: 300
+  src: local("Roboto-Light"), url('../fonts/Roboto-Light.ttf')
+
+@font-face
+  font-family: Roboto
+  font-weight: 500
+  src: local("Roboto-Medium"), url('../fonts/Roboto-Medium.ttf')
+
+@font-face
+  font-family: Roboto
+  font-weight: 400
+  src: url('../fonts/Roboto-Regular.ttf')
+
+// Анимации
+
+@keyframes leftToRight
+  0%
+    opacity: 0
+    transform: translateX(-10%)
+  80%
+    transform: translateX(10%)
+  100%
+    opacity: 1
+    transform: translateX(0)
+
+@keyframes rightToLeft
+  0%
+    opacity: 0
+    transform: translateX(10%)
+  80%
+    transform: translateX(-10%)
+  100%
+    opacity: 1
+    transform: translateX(0)
+
+@keyframes btnToUp
+  0%
+    opacity: 0
+    transform: translateY(5rem)
+  100%
+    opacity: 1
+    transform: translateY(0)
+
+// Переменные
+
+$container-margin: 5rem
+
+// Общее
+
+*
+  box-sizing: border-box
+
+html
+  font-size: 62.5%
+  font-family: Roboto
+  font-weight: 400
+  letter-spacing: .2rem
+  
+// Остальное
+
+.logo
+  height: 7rem
+
+.container
+  margin: $container-margin
+  height: 10rem
+
+.header
+  background: linear-gradient(90.05deg, rgba(186, 133, 84, 0.7) 0.03%, rgba(1, 1, 1, 0.7) 99.94%), url(../img/header-bg.jpg) center / cover no-repeat
+  height: calc(100vh - $container-margin)
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 82%)
+  position: relative
+  &__navbar
+    padding: 5rem
+    position: absolute
+    display: flex
+    width: 100%
+    justify-content: space-between
+    top: 0
+    left: 0
+  &__title
+    margin-bottom: 5rem
+  &__box
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    width: 100%
+    text-align: center
+
+
+.title-first
+  color: #ffffff
+  text-align: center
+  overflow: hidden
+  &__main
+    display: block
+    font-weight: 900
+    font-size: 5rem
+    letter-spacing: 1rem
+    margin-bottom: 1rem
+    text-transform: uppercase
+    animation-name: leftToRight
+    animation-duration: 1.5s
+    animation-timing-function: ease
+    animation-fill-mode: backwards
+  &__secondary
+    display: block
+    letter-spacing: .5rem
+    font-size: 4rem
+    font-weight: 300
+    animation-name: rightToLeft
+    animation-duration: 1.5s
+    animation-timing-function: ease
+    animation-fill-mode: backwards
+
+.btn
+  padding: 1.5rem 4rem
+  color: #777777
+  font-weight: 500
+  font-size: 2rem
+  text-transform: uppercase
+  background: #ffffff
+  display: inline-block
+  border-radius: 5rem
+  cursor: pointer
+  transition: all .2s
+  text-decoration: none
+  box-shadow: 0rem .4rem .4rem rgba(0, 0, 0, 0.25)
+  position: relative
+  &:hover
+    transform: translateY(-.4rem)
+    &::before
+      opacity: 0
+      transform: scale(1.5)
+  &:active
+    transform: translateY(-.2rem)
+  &::before
+    content: ''
+    width: 100%
+    height: 100%
+    background: #ffffff
+    position: absolute
+    left: 0
+    top: 0
+    z-index: -1
+    border-radius: 5rem
+    display: inline-block
+    transition: all .25s ease-in-out
+  &__animated
+    animation: btnToUp ease 1s
+    animation-fill-mode: backwards
